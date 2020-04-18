@@ -95,12 +95,55 @@ class SortingRobot:
     def sort(self):
         """
         Sort the robot's list.
-        """
+       """
+        
 # pick up first card in list 
-# move right
-# compare items
-# if item is less move right if item is more swap
-# continue doing till end of list if item in hand is more swap
+        while True:
+            if SortingRobot.can_move_left(self) == False:
+                SortingRobot.swap_item(self)            
+                SortingRobot.move_right(self)
+                print(f"#1 \nitem:{self._item} \nindex:{self._position} \nlist:{self._list}")
+                # move right if item is more swap
+            while SortingRobot.can_move_right(self) == True:     
+                if SortingRobot.compare_item(self) == -1 or 0 or None:           
+                    SortingRobot.swap_item(self)
+                    SortingRobot.can_move_left(self)
+                    SortingRobot.can_move_right(self)
+                    SortingRobot.move_right(self)            
+                # compare items
+                # if item is less move right 
+                if SortingRobot.compare_item(self) == 1:
+                    SortingRobot.can_move_left(self)
+                    SortingRobot.can_move_right(self)                
+                    SortingRobot.move_right(self)
+                    print(f"#2 \nitem:{self._item} \nindex:{self._position} \nlist:{self._list}")
+                    # continue doing till end of list if item in hand is more swap                   
+            else:                         
+                while True:
+                    if SortingRobot.can_move_right(self) == False:
+                        SortingRobot.compare_item(self) == -1 or 0           
+                        SortingRobot.swap_item(self)
+                        print(f"End of first \nitem:{self._item} \nindex:{self._position} \nlist:{self._list}")
+                    while SortingRobot.can_move_left(self) == True:                      
+                        if SortingRobot.compare_item(self) == 1 or None:            
+                            SortingRobot.swap_item(self)
+                            SortingRobot.can_move_left(self)
+                            SortingRobot.can_move_right(self)
+                            SortingRobot.move_left(self)            
+                    # compare items
+                    # if item is less move right 
+                        if SortingRobot.compare_item(self) == -1 or 0:
+                            SortingRobot.can_move_left(self) 
+                            SortingRobot.can_move_right(self)                
+                            SortingRobot.move_left(self)
+                            print(f"second block  \nitem:{self._item} \nindex:{self._position} \nlist:{self._list}")
+                            # continue doing till end of list if item in hand is more swap
+                           
+                   
+            
+            
+
+            
 # after last swap reverse direction and go back left 
 # compare item held if more  go left
 # if less swap item go left
