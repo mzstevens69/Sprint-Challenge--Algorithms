@@ -14,7 +14,7 @@ def count_th(word):
     l = len(s)
     if w == 0 or w < l:
         return 0
-#if length is zero)
+#if length is zero
 #return 0;
 # if it matches, increment occurrences
     if word[0 : l] == s:
